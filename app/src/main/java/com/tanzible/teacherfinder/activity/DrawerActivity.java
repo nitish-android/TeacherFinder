@@ -56,12 +56,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         auth = FirebaseAuth.getInstance();
 
-        if (auth.getCurrentUser() != null) {
-            // already signed in
-            FirebaseUser user = auth.getCurrentUser();
-            Picasso.get().load(user.getPhotoUrl()).into(imageView);
-            username.setText(user.getDisplayName());
-            email.setText(user.getEmail());
+
 
 
             Toolbar toolbar = findViewById(R.id.toolbar);
@@ -81,10 +76,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         transaction.commit();
 
 
-        } else {
-        // not signed in
-        showSignInOptions();
-        }
+
 
 
         }
@@ -156,74 +148,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     }
 
 
-    private void showSignInOptions(){
-
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setIsSmartLockEnabled(false)
-                        .setAvailableProviders(Collections.singletonList(new AuthUI.IdpConfig.GoogleBuilder().build()))
-                        .setTosAndPrivacyPolicyUrls("https://superapp.example.com/terms-of-service.html",
-                                "https://superapp.example.com/privacy-policy.html")
-                        .setTheme(R.style.MyTheme)
-                        .build(),
-                RC_SIGN_IN);
-
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            // Successfully signed in
-            if (resultCode == RESULT_OK) {
 
 
-
-                Toolbar toolbar = findViewById(R.id.toolbar);
-                setSupportActionBar(toolbar);
-
-                DrawerLayout drawer = findViewById(R.id.drawer_layout);
-                ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-                drawer.addDrawerListener(toggle);
-                toggle.syncState();
-
-                NavigationView navigationView = findViewById(R.id.nav_view);
-                navigationView.setNavigationItemSelectedListener(this);
-
-                FirebaseUser user = auth.getCurrentUser();
-                if (user != null) {
-                    Picasso.get().load(user.getPhotoUrl()).into(imageView);
-                    username.setText(user.getDisplayName());
-                    email.setText(user.getEmail());
-                }
-
-
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.content_frame, new HomeFragment());
-                transaction.commit();
-
-            } else {
-                // Sign in failed
-                if (response == null) {
-                    // User pressed back button
-                    Toast.makeText(DrawerActivity.this, "Sign in cancelled!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (response.getError().getErrorCode() == ErrorCodes.NO_NETWORK) {
-                    Toast.makeText(DrawerActivity.this, "No internet connection!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                Toast.makeText(DrawerActivity.this, "Unknown error!", Toast.LENGTH_SHORT).show();
-                Log.e("MainActivity", "Sign-in error: ", response.getError());
-            }
-        }
-    }
 
 }

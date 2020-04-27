@@ -1,13 +1,19 @@
 package com.tanzible.teacherfinder.activity;
 
-import android.content.Intent;
-import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.tanzible.teacherfinder.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RelativeLayout loginLayout;
+    private TextView txtRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,14 +21,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        loginLayout = findViewById(R.id.login_button);
+        txtRegister = findViewById(R.id.register_text_view);
 
-        int secondsDelayed = 1;
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                startActivity(new Intent(MainActivity.this, DrawerActivity.class));
+        loginLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,LogInActivity.class));
                 finish();
             }
-        }, secondsDelayed * 1000);
+        });
+
+
+        txtRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+startActivity(new Intent(MainActivity.this,RegistrationActivity.class));
+finish();
+            }
+        });
+
+
+
 
     }
 
