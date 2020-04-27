@@ -1,12 +1,15 @@
 package com.tanzible.teacherfinder.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
@@ -15,6 +18,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.tanzible.teacherfinder.R;
 
 public class LogInActivity extends AppCompatActivity {
@@ -23,6 +30,7 @@ public class LogInActivity extends AppCompatActivity {
     private TextView forgot_password_text_view;
     private RelativeLayout login_button;
     private CardView login_button_card_view;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,8 @@ public class LogInActivity extends AppCompatActivity {
         forgot_password_text_view = findViewById(R.id.forgot_password_text_view);
         login_button = findViewById(R.id.login_button);
         login_button_card_view = findViewById(R.id.login_button_card_view);
+
+        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @SuppressLint("ResourceType")
@@ -76,9 +86,41 @@ public class LogInActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (email.getText().length() > 0 && password.getText().length() > 0) {
-                    Toast.makeText(LogInActivity.this, email.getText() + " " + password.getText(), Toast.LENGTH_LONG).show();
+
+                final String uemail = email.getText().toString().trim();
+                String upassword = password.getText().toString().trim();
+
+                if (TextUtils.isEmpty(uemail)){
+                    email.setError(" Email is required");
+                    return;
                 }
+                if (TextUtils.isEmpty(upassword)){
+                    password.setError(" Password is required");
+                    return;
+                }
+                if (upassword.length() < 6){
+                    password.setError("Password must be greater than 6 digit");
+                }
+
+
+                firebaseAuth.signInWithEmailAndPassword(uemail,upassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()){
+                            Toast.makeText(LogInActivity.this,"Logged in successfull", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),DrawerActivity.class));
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(LogInActivity.this,"Error !" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+
+
             }
         });
     }
