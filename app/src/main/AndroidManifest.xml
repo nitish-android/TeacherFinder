@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LogInActivity"></activity>
+        <activity android:name=".activity.GraduationAcitvity"></activity>
+        <activity android:name=".activity.HigherActivity" />
+        <activity android:name=".activity.SecondaryActivity" />
+        <activity android:name=".activity.PrimaryActivity" />
+        <activity android:name=".activity.DashboardActivity" />
+        <activity android:name=".activity.LogInActivity" />
         <activity android:name=".activity.RegistrationActivity" />
         <activity android:name=".activity.DrawerActivity" />
         <activity android:name=".activity.MainActivity">
