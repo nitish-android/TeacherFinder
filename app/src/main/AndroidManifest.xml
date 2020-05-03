@@ -3,6 +3,7 @@
     package="com.tanzible.teacherfinder">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -11,15 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.GraduationAcitvity"></activity>
+        <activity android:name=".lerningActivity.LearningEditProfile"></activity>
+        <activity android:name=".teachngActivity.TeachingMyAccount" />
+        <activity android:name=".lerningActivity.LearingLogIn" />
+        <activity android:name=".lerningActivity.LearningMyAccount" />
+        <activity android:name=".lerningActivity.LearningGraduationActivity" />
+        <activity android:name=".lerningActivity.LearningHigherActivity" />
+        <activity android:name=".lerningActivity.LearningSecondaryActivity" />
+        <activity android:name=".lerningActivity.LearningPrimaryActivity" />
+        <activity android:name=".lerningActivity.LearningDashboard" />
+        <activity android:name=".teachngActivity.TeachingDashboard" />
+        <activity android:name=".lerningActivity.LearningRegistration" />
+        <activity android:name=".activity.GraduationAcitvity" />
         <activity android:name=".activity.HigherActivity" />
         <activity android:name=".activity.SecondaryActivity" />
         <activity android:name=".activity.PrimaryActivity" />
         <activity android:name=".activity.DashboardActivity" />
         <activity android:name=".activity.LogInActivity" />
-        <activity android:name=".activity.RegistrationActivity" />
+        <activity android:name=".teachngActivity.TeachingRegistration" />
         <activity android:name=".activity.DrawerActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.OpenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

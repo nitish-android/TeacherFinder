@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:fillViewport="true"
-    tools:context=".activity.RegistrationActivity">
+    tools:context=".lerningActivity.LearingLogIn">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+            android:layout_centerVertical="true">
 
             <TextView
                 android:id="@+id/nice_to_see_you_text_view"
@@ -38,85 +38,13 @@
                 android:layout_marginTop="30dp">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/name_input_parent"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    app:cardBackgroundColor="@color/colorCardViewBackground"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="0dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <EditText
-                            android:id="@+id/name"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@null"
-                            android:hint="Name"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:maxLines="1"
-                            android:textColor="@color/colorTitle"
-                            android:textSize="16sp"
-                            tools:ignore="TextFields" />
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/mobile_input_parent"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/name_input_parent"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="15dp"
-                    app:cardBackgroundColor="@color/colorCardViewBackground"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="0dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <EditText
-                            android:id="@+id/mobile"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@null"
-                            android:hint="Mobile"
-                            android:imeOptions="actionDone"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:textColor="@color/colorTitle"
-                            android:textSize="16sp"
-                            tools:ignore="TextFields" />
-
-                    </RelativeLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
                     android:id="@+id/email_input_parent"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_below="@+id/mobile_input_parent"
                     app:cardBackgroundColor="@color/colorCardViewBackground"
                     app:cardCornerRadius="20dp"
-                    android:layout_marginTop="15dp"
                     app:cardElevation="0dp">
 
                     <RelativeLayout
@@ -142,6 +70,7 @@
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/password_input_parent"
@@ -179,12 +108,23 @@
 
                 </androidx.cardview.widget.CardView>
 
-
+                <TextView
+                    android:id="@+id/forgot_password_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/password_input_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="forget password?"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/register_button_card_view"
+                android:id="@+id/login_button_card_view"
                 android:layout_width="130dp"
                 android:layout_height="45dp"
                 android:layout_below="@+id/login_input_parent"
@@ -196,7 +136,7 @@
                 app:cardElevation="0dp">
 
                 <RelativeLayout
-                    android:id="@+id/register_button"
+                    android:id="@+id/login_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="false"
@@ -211,7 +151,7 @@
                         android:layout_marginRight="5dp"
                         android:ellipsize="end"
                         android:lines="1"
-                        android:text="Register"
+                        android:text="LogIn"
                         android:textColor="@color/colorWhite"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -222,22 +162,6 @@
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
-        <TextView
-            android:id="@+id/login_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="15dp"
-            android:ellipsize="end"
-            android:lines="1"
-            android:textStyle="bold"
-            android:fontFamily="@font/proximanova_regular"
-            android:text="You are a member?LogIn"
-            android:textColor="@color/colorTitle"
-            android:textSize="16sp" />
-
-
 
     </RelativeLayout>
 

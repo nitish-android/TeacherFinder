@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="4dp"
+    android:gravity="center|start"
+    tools:context=".activity.OpenActivity">
+
+    <TextView
+        android:id="@+id/nice_to_see_you_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:fontFamily="@font/sf_pro_display"
+        android:text="Nice to see you"
+        android:textColor="@color/colorTitle"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/teaching"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_input_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/colorCardViewBackground"
+        app:cardCornerRadius="22.5dp"
+        app:cardElevation="0dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+
+        android:fontFamily="@font/sf_pro_display"
+        android:text="Teaching"
+        android:textColor="@color/colorTitle"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="12dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/leraning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_input_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/colorCardViewBackground"
+        app:cardCornerRadius="22.5dp"
+        app:cardElevation="0dp">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:fontFamily="@font/sf_pro_display"
+        android:text="Learning"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/colorTitle"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

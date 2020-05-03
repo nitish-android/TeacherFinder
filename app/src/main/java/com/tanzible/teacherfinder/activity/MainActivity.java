@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tanzible.teacherfinder.R;
+import com.tanzible.teacherfinder.teachngActivity.TeachingRegistration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-startActivity(new Intent(MainActivity.this,RegistrationActivity.class));
+startActivity(new Intent(MainActivity.this, TeachingRegistration.class));
 finish();
             }
         });

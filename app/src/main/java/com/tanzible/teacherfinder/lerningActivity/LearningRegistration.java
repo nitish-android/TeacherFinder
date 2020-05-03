@@ -1,4 +1,4 @@
-package com.tanzible.teacherfinder.activity;
+package com.tanzible.teacherfinder.lerningActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,45 +28,49 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.tanzible.teacherfinder.R;
+import com.tanzible.teacherfinder.activity.DrawerActivity;
+import com.tanzible.teacherfinder.activity.LogInActivity;
+import com.tanzible.teacherfinder.teachngActivity.TeachingDashboard;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class LearningRegistration extends AppCompatActivity {
 
     private EditText name,mobile,email, password;
     private RelativeLayout register_button;
     private CardView register_button_card_view;
-    private TextView login_text_view;
+    private TextView AlreadyLogin;
     FirebaseAuth mAuth;
     private ProgressBar progressBar;
     FirebaseFirestore firestore;
     String UserId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_learning_registration);
 
         setType();
         registerOnClick();
         inputChange();
-        loginTextOnClick();
+        alreadyLogin();
+
 
 
     }
 
-    private void loginTextOnClick() {
+    private void alreadyLogin() {
 
-        login_text_view.setOnClickListener(new View.OnClickListener() {
+        AlreadyLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegistrationActivity.this,LogInActivity.class));
-                finish();
+                startActivity(new Intent(getApplicationContext(),LearingLogIn.class));
             }
         });
-
     }
+
 
     @SuppressLint("ResourceType")
     private void registerButtonStyle() {
@@ -97,33 +101,35 @@ public class RegistrationActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         register_button = findViewById(R.id.register_button);
         register_button_card_view = findViewById(R.id.register_button_card_view);
-        login_text_view = findViewById(R.id.login_text_view);
+        AlreadyLogin = findViewById(R.id.already_register_learning);
         //progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
         if (mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),DrawerActivity.class));
+            startActivity(new Intent(getApplicationContext(), LearningDashboard.class));
             finish();
         }
 
-           }
+
+
+    }
 
     private void registerOnClick() {
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-               final String uname = name.getText().toString().trim();
-               final String umobile = mobile.getText().toString().trim();
-               final String uemail = email.getText().toString().trim();
-               String upassword = password.getText().toString().trim();
+                final String uname = name.getText().toString().trim();
+                final String umobile = mobile.getText().toString().trim();
+                final String uemail = email.getText().toString().trim();
+                String upassword = password.getText().toString().trim();
 
-               if (TextUtils.isEmpty(uname)){
-                   name.setError(" Name is required");
-                   return;
-               }
+                if (TextUtils.isEmpty(uname)){
+                    name.setError(" Name is required");
+                    return;
+                }
 
                 if (TextUtils.isEmpty(umobile)){
                     mobile.setError(" Mobile is required");
@@ -140,7 +146,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (upassword.length() < 6){
                     password.setError("Password must be greater than 6 digit");
                 }
-               // progressBar.setVisibility(View.VISIBLE);
+                // progressBar.setVisibility(View.VISIBLE);
 
                 // register the user in firebase
 
@@ -149,9 +155,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()){
-                            Toast.makeText(RegistrationActivity.this,"User Created",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LearningRegistration.this,"User Created",Toast.LENGTH_SHORT).show();
                             UserId = mAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = firestore.collection("users").document(UserId);
+                            DocumentReference documentReference = firestore.collection("Learning").document(UserId);
                             Map<String,Object> user = new HashMap<>();
                             user.put("fName",uname);
                             user.put("Mobile",umobile);
@@ -162,11 +168,12 @@ public class RegistrationActivity extends AppCompatActivity {
                                     Log.d("TAG","onsuccess: useer created" + UserId);
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),DrawerActivity.class));
-                        } else 
+                            startActivity(new Intent(getApplicationContext(),LearningDashboard.class));
+                            finish();
+                        } else
                         {
-                            Toast.makeText(RegistrationActivity.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                          //  progressBar.setVisibility(View.GONE);
+                            Toast.makeText(LearningRegistration.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            //  progressBar.setVisibility(View.GONE);
                         }
 
                     }
