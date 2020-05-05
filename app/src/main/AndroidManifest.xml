@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lerningActivity.LearningEditProfile"></activity>
+        <activity android:name=".lerningActivity.LearningEditProfile" />
         <activity android:name=".teachngActivity.TeachingMyAccount" />
         <activity android:name=".lerningActivity.LearingLogIn" />
         <activity android:name=".lerningActivity.LearningMyAccount" />

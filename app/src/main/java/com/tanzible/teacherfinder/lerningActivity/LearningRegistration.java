@@ -37,7 +37,7 @@ import java.util.Map;
 
 public class LearningRegistration extends AppCompatActivity {
 
-    private EditText name,mobile,email, password;
+    private EditText name,mobile,email, password,address,student_class,student_school;
     private RelativeLayout register_button;
     private CardView register_button_card_view;
     private TextView AlreadyLogin;
@@ -102,6 +102,9 @@ public class LearningRegistration extends AppCompatActivity {
         register_button = findViewById(R.id.register_button);
         register_button_card_view = findViewById(R.id.register_button_card_view);
         AlreadyLogin = findViewById(R.id.already_register_learning);
+        address = findViewById(R.id.address);
+        student_class = findViewById(R.id.student_class);
+        student_school = findViewById(R.id.student_school_name);
         //progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
@@ -125,6 +128,9 @@ public class LearningRegistration extends AppCompatActivity {
                 final String umobile = mobile.getText().toString().trim();
                 final String uemail = email.getText().toString().trim();
                 String upassword = password.getText().toString().trim();
+                final String uaddress = address.getText().toString().trim();
+                final  String ustudent_class = student_class.getText().toString().trim();
+                final String ustudent_school = student_school.getText().toString().trim();
 
                 if (TextUtils.isEmpty(uname)){
                     name.setError(" Name is required");
@@ -146,6 +152,17 @@ public class LearningRegistration extends AppCompatActivity {
                 if (upassword.length() < 6){
                     password.setError("Password must be greater than 6 digit");
                 }
+                if (TextUtils.isEmpty(uaddress)){
+                    address.setError(" Address is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(ustudent_class)){
+                    student_class.setError(" Class is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(ustudent_school)){
+                    student_school.setError("School / College name is required");
+                }
                 // progressBar.setVisibility(View.VISIBLE);
 
                 // register the user in firebase
@@ -162,6 +179,9 @@ public class LearningRegistration extends AppCompatActivity {
                             user.put("fName",uname);
                             user.put("Mobile",umobile);
                             user.put("email",uemail);
+                            user.put("address",uaddress);
+                            user.put("student_class",ustudent_class);
+                            user.put("student_school",ustudent_school);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

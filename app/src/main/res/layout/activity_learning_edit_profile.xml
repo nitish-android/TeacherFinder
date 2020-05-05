@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollview"
-        android:layout_above="@+id/tv_continue"
+
         android:background="@color/colorWhite"
         android:layout_below="@+id/toolbar_top">
 
@@ -72,14 +72,14 @@
                     android:textColor="@color/heading_text_color_grey"
                     android:text="Name" />
 
-                <EditText
-                    android:id="@+id/et_name"
+                <TextView
+                    android:id="@+id/tv_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:inputType="text"
                     android:textColor="@color/et_text_color_darkgrey"
-                    android:hint="Enter Name Here" />
+                     />
 
             </LinearLayout>
 
@@ -98,16 +98,13 @@
                     android:textColor="@color/heading_text_color_grey"
                     android:text="Mobile No." />
 
-                <EditText
-                    android:id="@+id/et_mobile_no"
+                <TextView
+                    android:id="@+id/tv_mobile_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:editable="false"
-                    android:enabled="false"
-                    android:inputType="text"
+                    android:textSize="18sp"
                     android:textColor="@color/et_text_color_darkgrey"
-                    android:hint="Enter Secondary Mobile Here" />
+                    />
 
             </LinearLayout>
 
@@ -125,33 +122,93 @@
                     android:textColor="@color/heading_text_color_grey"
                     android:text="Street Address" />
 
-                <EditText
-                    android:id="@+id/et_street_address"
+                <TextView
+                    android:id="@+id/tv_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:inputType="text"
+                    android:textSize="18sp"
                     android:textColor="@color/et_text_color_darkgrey"
-                    android:hint="Enter Address Here" />
+                    />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_marginTop="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/heading_text_color_grey"
+                    android:text="Mobile No." />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/et_text_color_darkgrey"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_marginTop="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/heading_text_color_grey"
+                    android:text="Mobile No." />
+
+                <TextView
+                    android:id="@+id/tv_student_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/et_text_color_darkgrey"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_marginTop="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/heading_text_color_grey"
+                    android:text="Mobile No." />
+
+                <TextView
+                    android:id="@+id/tv_school_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/et_text_color_darkgrey"
+                    />
+
+            </LinearLayout>
+
 
 
         </LinearLayout>
 
     </ScrollView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/tv_continue"
-        android:background="@color/nav_color_green"
-        android:gravity="center"
-        android:text="SAVE PROFILE"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp" />
+
 
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.tanzible.teacherfinder.lerningActivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -8,8 +9,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.tanzible.teacherfinder.R;
 import com.tanzible.teacherfinder.activity.OpenActivity;
 
@@ -17,6 +24,13 @@ public class LearningMyAccount extends AppCompatActivity {
 
     private CardView editProfileView;
     private CardView logoutView;
+    private CardView aboutView;
+    private CardView helpView;
+    private TextView uName,uEmail,uMobile;
+
+    FirebaseAuth mAuth;
+    FirebaseFirestore firestore;
+    String UserId;
 
 
     @Override
@@ -26,6 +40,28 @@ public class LearningMyAccount extends AppCompatActivity {
 
         editProfileView = findViewById(R.id.cardViewEdit);
         logoutView = findViewById(R.id.cardViewLogout);
+        aboutView = findViewById(R.id.cardViewAbout);
+        helpView = findViewById(R.id.cardViewHelp);
+        uName = findViewById(R.id.uesrName);
+        uEmail = findViewById(R.id.uemail);
+        uMobile = findViewById(R.id.uMobile);
+
+        mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        UserId = mAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = firestore.collection("Learning").document(UserId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+
+            uMobile.setText(documentSnapshot.getString("Mobile"));
+            uName.setText(documentSnapshot.getString("fName"));
+            uEmail.setText(documentSnapshot.getString("email"));
+
+            }
+        });
+
 
         logoutView.setOnClickListener(new View.OnClickListener() {
             @Override

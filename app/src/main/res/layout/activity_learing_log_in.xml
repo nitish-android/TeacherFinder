@@ -109,7 +109,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/forgot_password_text_view"
+                    android:id="@+id/learning_forgot_password_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/password_input_parent"

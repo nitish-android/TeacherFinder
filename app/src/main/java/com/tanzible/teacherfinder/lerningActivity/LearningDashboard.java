@@ -3,6 +3,8 @@ package com.tanzible.teacherfinder.lerningActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +34,8 @@ public class LearningDashboard extends AppCompatActivity {
         graduationLearningView = findViewById(R.id.graduation_learning);
         myHomeLayout = findViewById(R.id.home_layout_learning);
         myAccountLayout = findViewById(R.id.account_layout_learning);
+
+       // completeProfile();
 
 
         primaryLearningView.setOnClickListener(new View.OnClickListener() {
@@ -82,5 +86,26 @@ public class LearningDashboard extends AppCompatActivity {
 
 
 
+
+
+
     }
+
+  /*  private void completeProfile() {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(LearningDashboard.this);
+        alert.setMessage("Please complete your profile")
+                .setPositiveButton("Go", new DialogInterface.OnClickListener()                 {
+
+                    public void onClick(DialogInterface dialog, int which) {
+
+                         // Last step. Logout function
+                        startActivity(new Intent(getApplicationContext(),LearningEditProfile.class));
+
+                    }
+                }).setNegativeButton("Cancel", null);
+
+        AlertDialog alert1 = alert.create();
+        alert1.show();
+    }*/
 }
