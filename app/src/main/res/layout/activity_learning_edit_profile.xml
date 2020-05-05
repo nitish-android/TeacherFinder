@@ -105,6 +105,14 @@
                     android:textSize="18sp"
                     android:textColor="@color/et_text_color_darkgrey"
                     />
+                <TextView
+                    android:id="@+id/verify_mobileno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/heading_text_color_grey"
+                    android:text="Click here to Verify!"
+                    android:gravity="end"/>
 
             </LinearLayout>
 
@@ -120,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/heading_text_color_grey"
-                    android:text="Street Address" />
+                    android:text="Email" />
 
                 <TextView
                     android:id="@+id/tv_email"
@@ -144,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/heading_text_color_grey"
-                    android:text="Mobile No." />
+                    android:text="Address" />
 
                 <TextView
                     android:id="@+id/tv_address"
@@ -167,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/heading_text_color_grey"
-                    android:text="Mobile No." />
+                    android:text="Class" />
 
                 <TextView
                     android:id="@+id/tv_student_class"
@@ -190,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="@color/heading_text_color_grey"
-                    android:text="Mobile No." />
+                    android:text="School / College Name" />
 
                 <TextView
                     android:id="@+id/tv_school_name"

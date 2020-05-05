@@ -37,6 +37,11 @@
                 android:layout_below="@+id/nice_to_see_you_text_view"
                 android:layout_marginTop="30dp">
 
+
+
+
+
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/name_input_parent"
                     android:layout_width="match_parent"
@@ -283,6 +288,11 @@
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
+
+
+
+
+
 
 
 

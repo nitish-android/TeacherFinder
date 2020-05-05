@@ -2,8 +2,10 @@ package com.tanzible.teacherfinder.lerningActivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +27,8 @@ public class LearningEditProfile extends AppCompatActivity {
     private TextView tv_address;
     private TextView tv_student_class;
     private TextView tv_school_name;
+    TextView verify_number;
+    private Toolbar toolbar;
 
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
@@ -37,9 +41,13 @@ public class LearningEditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_learning_edit_profile);
 
 
+
+
+
         setType();
 
     }
+
 
     private void setType() {
         profile_Image = findViewById(R.id.profile_image);
@@ -49,6 +57,8 @@ public class LearningEditProfile extends AppCompatActivity {
         tv_address = findViewById(R.id.tv_address);
         tv_student_class = findViewById(R.id.tv_student_class);
         tv_school_name = findViewById(R.id.tv_school_name);
+        verify_number = findViewById(R.id.verify_mobileno);
+        
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -77,4 +87,5 @@ public class LearningEditProfile extends AppCompatActivity {
 
 
     }
+
 }

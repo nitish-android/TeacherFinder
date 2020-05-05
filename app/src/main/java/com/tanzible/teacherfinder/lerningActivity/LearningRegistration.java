@@ -1,13 +1,19 @@
 package com.tanzible.teacherfinder.lerningActivity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -21,12 +27,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.tanzible.teacherfinder.R;
 import com.tanzible.teacherfinder.activity.DrawerActivity;
 import com.tanzible.teacherfinder.activity.LogInActivity;
@@ -35,8 +45,11 @@ import com.tanzible.teacherfinder.teachngActivity.TeachingDashboard;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class LearningRegistration extends AppCompatActivity {
 
+    private CircleImageView profile_image;
     private EditText name,mobile,email, password,address,student_class,student_school;
     private RelativeLayout register_button;
     private CardView register_button_card_view;
@@ -44,7 +57,13 @@ public class LearningRegistration extends AppCompatActivity {
     FirebaseAuth mAuth;
     private ProgressBar progressBar;
     FirebaseFirestore firestore;
+    StorageReference storageReference;
+
     String UserId;
+
+    String DISPLAY_NAME = null;
+    String PROFILE_IMAGE_URl = null;
+    int TAKE_IMAGE_CODE =   10001;
 
 
     @Override
@@ -59,7 +78,11 @@ public class LearningRegistration extends AppCompatActivity {
 
 
 
+
+
     }
+
+
 
     private void alreadyLogin() {
 
@@ -105,10 +128,16 @@ public class LearningRegistration extends AppCompatActivity {
         address = findViewById(R.id.address);
         student_class = findViewById(R.id.student_class);
         student_school = findViewById(R.id.student_school_name);
+
+
         //progressBar = findViewById(R.id.progressBar);
+
+
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
+
 
         if (mAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), LearningDashboard.class));
@@ -118,6 +147,9 @@ public class LearningRegistration extends AppCompatActivity {
 
 
     }
+
+
+
 
     private void registerOnClick() {
         register_button.setOnClickListener(new View.OnClickListener() {
@@ -238,5 +270,10 @@ public class LearningRegistration extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void handleImageClick(View view) {
+
+
     }
 }
