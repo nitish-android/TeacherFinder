@@ -1,5 +1,6 @@
 package com.tanzible.teacherfinder.lerningActivity.teacherPrimary;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.tanzible.teacherfinder.R;
+import com.tanzible.teacherfinder.lerningActivity.LearningPrimaryActivity;
 
 public class TeacherPrimaryAdapter extends FirestoreRecyclerAdapter<TeacherPrimaryModel,TeacherPrimaryAdapter.TeacherPrimaryHolder> {
+
 
 
     public TeacherPrimaryAdapter(@NonNull FirestoreRecyclerOptions<TeacherPrimaryModel> options) {
@@ -26,6 +30,9 @@ public class TeacherPrimaryAdapter extends FirestoreRecyclerAdapter<TeacherPrima
         teacherPrimaryHolder.txt_experience.setText(teacherPrimaryModel.getExperience());
         teacherPrimaryHolder.txt_subjects.setText(teacherPrimaryModel.getSubject());
         teacherPrimaryHolder.txt_priority.setText(String.valueOf(teacherPrimaryModel.getPriority()));
+
+
+
     }
 
     @NonNull
@@ -51,6 +58,10 @@ public class TeacherPrimaryAdapter extends FirestoreRecyclerAdapter<TeacherPrima
             txt_subjects = itemView.findViewById(R.id.teacher_subject);
             txt_priority = itemView.findViewById(R.id.teacher_priority);
 
+
+
         }
     }
+
+
 }

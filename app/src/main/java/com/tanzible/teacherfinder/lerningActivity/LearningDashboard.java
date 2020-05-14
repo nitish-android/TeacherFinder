@@ -45,24 +45,24 @@ public class LearningDashboard extends AppCompatActivity {
             }
         });
 
-        primaryLearningView.setOnClickListener(new View.OnClickListener() {
+        secondaryLearningView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),LearningPrimaryActivity.class));
+                startActivity(new Intent(getApplicationContext(),LearningSecondaryActivity.class));
             }
         });
 
-        primaryLearningView.setOnClickListener(new View.OnClickListener() {
+        higherLearningView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),LearningPrimaryActivity.class));
+                startActivity(new Intent(getApplicationContext(),LearningHigherActivity.class));
             }
         });
 
-        primaryLearningView.setOnClickListener(new View.OnClickListener() {
+        graduationLearningView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),LearningPrimaryActivity.class));
+                startActivity(new Intent(getApplicationContext(),LearningGraduationActivity.class));
             }
         });
 
