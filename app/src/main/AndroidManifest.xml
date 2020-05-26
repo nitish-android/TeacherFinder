@@ -12,6 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".lerningActivity.teacherHigher.TeacherHigherDetailActivity"></activity>
+        <activity android:name=".lerningActivity.teacherGraduation.TeacherGraduationDetailActivity" />
+        <activity android:name=".lerningActivity.teacherSecondary.TeacherSecondaryDetailActivity" />
+        <activity android:name=".teachngActivity.masterPrimary.Master_PrimaryDetailActivity" />
+        <activity android:name=".teachngActivity.masterGraduation.Master_GraduationActivity" />
+        <activity android:name=".teachngActivity.masterHigher.Master_HigherActivity" />
+        <activity android:name=".teachngActivity.masterSecondry.Master_SecondryActivity" />
+        <activity android:name=".teachngActivity.masterPrimary.Master_PrimaryActivity" />
         <activity android:name=".lerningActivity.teacherPrimary.TeacherPrimaryDetailActivity" />
         <activity android:name=".lerningActivity.LearningEditProfile" />
         <activity android:name=".teachngActivity.TeachingMyAccount" />

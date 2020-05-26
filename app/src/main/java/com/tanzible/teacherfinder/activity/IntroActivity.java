@@ -3,9 +3,11 @@ package com.tanzible.teacherfinder.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,9 +17,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.tanzible.teacherfinder.IntroViewPagerAdapter;
 import com.tanzible.teacherfinder.R;
 import com.tanzible.teacherfinder.ScreenItem;
+import com.tanzible.teacherfinder.lerningActivity.LearningDashboard;
+import com.tanzible.teacherfinder.teachngActivity.TeachingDashboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +37,11 @@ public class IntroActivity extends AppCompatActivity {
     Button btnGetStarted;
     Animation btnAnim ;
     TextView tvSkip;
+    FirebaseAuth mAuth;
+    Context context;
+
+    private static int SPLASH_TIME_OUT = 3000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +51,28 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
 
+context = this;
+
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        mAuth = FirebaseAuth.getInstance();
 
 
         if (restorePrefData()) {
 
+
             Intent mainActivity = new Intent(getApplicationContext(),OpenActivity.class );
             startActivity(mainActivity);
             finish();
-    }
+
+
+
+
+
+
+        }
         // hide the action bar
 
        // getSupportActionBar().hide();
@@ -158,7 +180,7 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
-        // skip button click listener
+
 
         tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override

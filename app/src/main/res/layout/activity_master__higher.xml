@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lerningActivity.LearningHigherActivity">
+    tools:context=".teachngActivity.masterHigher.Master_HigherActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/appBar">
+        android:id="@+id/appBar"
+        style="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/toolbar"
-            style="@style/AppTheme.PopupOverlay"/>
+            style="@style/AppTheme.PopupOverlay"
+            />
     </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/appBar"
         android:id="@+id/recyclerView"
-        android:padding="8dp"
+        android:padding="4dp"
         android:layout_margin="4dp"/>
 
 </RelativeLayout>

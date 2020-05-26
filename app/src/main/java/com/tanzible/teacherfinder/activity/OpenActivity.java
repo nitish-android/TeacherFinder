@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -21,6 +24,8 @@ public class OpenActivity extends AppCompatActivity {
     private CardView teachingView;
     private CardView learningView;
     FirebaseAuth mAuth;
+    CheckBox checkBox;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +34,14 @@ public class OpenActivity extends AppCompatActivity {
 
         teachingView = findViewById(R.id.teaching);
         learningView = findViewById(R.id.leraning);
+        checkBox = findViewById(R.id.checkbox);
+
+        SharedPreferences preferences = getSharedPreferences("checked",MODE_PRIVATE);
+        String checkbox = preferences.getString("remember","");
+
+
 
         mAuth = FirebaseAuth.getInstance();
-
 
 
 
@@ -56,6 +66,8 @@ public class OpenActivity extends AppCompatActivity {
                
             }
         });
+
+
 
     }
 }

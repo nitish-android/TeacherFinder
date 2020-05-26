@@ -1,4 +1,4 @@
-package com.tanzible.teacherfinder.lerningActivity;
+package com.tanzible.teacherfinder.teachngActivity.masterSecondry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,55 +10,53 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 import com.tanzible.teacherfinder.R;
-import com.tanzible.teacherfinder.lerningActivity.teacherPrimary.TeacherPrimaryAdapter;
-import com.tanzible.teacherfinder.lerningActivity.teacherPrimary.TeacherPrimaryModel;
+import com.tanzible.teacherfinder.teachngActivity.masterPrimary.Master_PrimaryActivity;
+import com.tanzible.teacherfinder.teachngActivity.masterPrimary.Master_PrimaryAdapter;
+import com.tanzible.teacherfinder.teachngActivity.masterPrimary.Mater_PrimaryModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LearningPrimaryActivity extends AppCompatActivity {
+public class Master_SecondryActivity extends AppCompatActivity {
+
     private Toolbar toolbar;
     private RecyclerView recyclerView;
-    private FirebaseFirestore firestore;
-    private TeacherPrimaryAdapter adapter;
-    List<TeacherPrimaryModel> models;
+    private Master_SecondaryAdapter adapter;
+    List<Master_SecondaryModal> master_secondaryModals;
+    FirebaseFirestore firestore;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_learning_primary);
+        setContentView(R.layout.activity_master__secondry);
 
         toolbar = findViewById(R.id.toolbar);
+        recyclerView = findViewById(R.id.recyclerView);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Primary Teacher");
+        getSupportActionBar().setTitle("Secondary Education");
 
-        recyclerView = findViewById(R.id.recyclerView);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
+        master_secondaryModals = new ArrayList<>();
 
-        models = new ArrayList<TeacherPrimaryModel>();
-
-        adapter = new TeacherPrimaryAdapter(models);
+        adapter = new Master_SecondaryAdapter(master_secondaryModals);
         recyclerView.setAdapter(adapter);
 
-
         firestore = FirebaseFirestore.getInstance();
-        firestore.collection("PrimaryLearning").orderBy("priority").get()
+        firestore.collection("PrimaryTeaching").orderBy("priority").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -66,7 +64,7 @@ public class LearningPrimaryActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
 
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()){
-                                models.add(new TeacherPrimaryModel(documentSnapshot.get("teacher_image").toString(),documentSnapshot.get("name").toString(),documentSnapshot.get("experience").toString()
+                                master_secondaryModals.add(new Master_SecondaryModal(documentSnapshot.get("student_image").toString(),documentSnapshot.get("name").toString(),documentSnapshot.get("class").toString()
                                         ,documentSnapshot.get("subject").toString(),documentSnapshot.get("priority").toString()));
 
                             }
@@ -75,7 +73,7 @@ public class LearningPrimaryActivity extends AppCompatActivity {
                         }
                         else {
                             String error = task.getException().getMessage();
-                            Toast.makeText(LearningPrimaryActivity.this, error, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Master_SecondryActivity.this, error, Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -87,9 +85,8 @@ public class LearningPrimaryActivity extends AppCompatActivity {
 
     }
 
-
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
@@ -97,10 +94,4 @@ public class LearningPrimaryActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
 }

@@ -1,4 +1,4 @@
-package com.tanzible.teacherfinder.lerningActivity.teacherPrimary;
+package com.tanzible.teacherfinder.teachngActivity.masterGraduation;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,22 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.tanzible.teacherfinder.R;
-import com.tanzible.teacherfinder.lerningActivity.LearningPrimaryActivity;
 import com.tanzible.teacherfinder.teachngActivity.masterPrimary.Master_PrimaryAdapter;
 import com.tanzible.teacherfinder.teachngActivity.masterPrimary.Master_PrimaryDetailActivity;
 
 import java.util.List;
 
-public class TeacherPrimaryAdapter extends RecyclerView.Adapter<TeacherPrimaryAdapter.ViewHolder>{
+public class Master_GraduationAdapter extends RecyclerView.Adapter<Master_GraduationAdapter.ViewHolder> {
 
-    List<TeacherPrimaryModel> models;
+    List<Master_GraduationModal> master_graduationModals;
 
-    public TeacherPrimaryAdapter(List<TeacherPrimaryModel> models) {
-        this.models = models;
+    public Master_GraduationAdapter(List<Master_GraduationModal> master_graduationModals) {
+        this.master_graduationModals = master_graduationModals;
     }
 
     @NonNull
@@ -40,57 +36,57 @@ public class TeacherPrimaryAdapter extends RecyclerView.Adapter<TeacherPrimaryAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        String image = models.get(position).getTeacher_image();
-        String name = models.get(position).getName();
-        String priority = models.get(position).getPriority();
-        String subject = models.get(position).getSubject();
-        String experience = models.get(position).getExperience();
+        String image = master_graduationModals.get(position).getStudent_image();
+        String name = master_graduationModals.get(position).getName();
+        String priority = master_graduationModals.get(position).getPriority();
+        String subject = master_graduationModals.get(position).getSubject();
+        String student_class = master_graduationModals.get(position).getStudent_class();
 
-        holder.setData(name,experience,priority,subject,position);
+        holder.setData(name,student_class,priority,subject,position);
         holder.setProfileImage(image);
 
     }
 
     @Override
     public int getItemCount() {
-        return models.size();
+        return master_graduationModals.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView imageView;
-        TextView teacher_name;
-        TextView teacher_exp;
-        TextView teacher_subject;
-        TextView teacher_priority;
+        TextView student_name;
+        TextView student_class;
+        TextView student_subject;
+        TextView student_priority;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.profile_image);
-            teacher_name = itemView.findViewById(R.id.teacherName);
-            teacher_exp = itemView.findViewById(R.id.teacher_exp);
-            teacher_subject = itemView.findViewById(R.id.teacher_subject);
-            teacher_priority = itemView.findViewById(R.id.teacher_priority);
-
+            student_name = itemView.findViewById(R.id.teacherName);
+            student_class = itemView.findViewById(R.id.teacher_exp);
+            student_priority = itemView.findViewById(R.id.teacher_priority);
+            student_subject = itemView.findViewById(R.id.teacher_subject);
         }
+
         private  void setProfileImage(String imageUrl){
             if (!imageUrl.equals("null")){
                 Glide.with(itemView.getContext()).load(imageUrl).apply(new RequestOptions().placeholder(R.drawable.user)).into(imageView);
             }}
-        private void setData(final String name, final String experience, final String priority, final String subject,final int position){
-            teacher_name.setText(name);
-            teacher_exp.setText(experience);
-            teacher_subject.setText(subject);
-            teacher_priority.setText(priority);
+
+        private void setData(final String name, final String student_classes, final String priority, final String subject,final int position){
+            student_name.setText(name);
+            student_class.setText(student_classes);
+            student_subject.setText(subject);
+            student_priority.setText(priority);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (position != 0) {
-                        Intent intent = new Intent(itemView.getContext(), TeacherPrimaryDetailActivity.class);
+                        Intent intent = new Intent(itemView.getContext(), Master_PrimaryDetailActivity.class);
                         intent.putExtra("Name", name);
                         intent.putExtra("Subject", subject);
-                        intent.putExtra("Experience", experience);
+                        intent.putExtra("Class", student_classes);
                         intent.putExtra("Priority", priority);
 
                         itemView.getContext().startActivity(intent);
